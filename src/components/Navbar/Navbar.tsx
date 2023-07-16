@@ -3,7 +3,7 @@ import { NavProps } from '../../types'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { evalFontSize } from '../../helpers/font'
 import MobileMenu from '../MobileMenu'
-import './Navbar.css'
+import '../../index.css'
 
 function Navbar({ height, width, bgColor, padding, Logo, TextLogo, hamburger, Links, cta, mobileMenu }: NavProps) {
   const matches = useMediaQuery('(min-width: 768px)')
@@ -14,6 +14,9 @@ function Navbar({ height, width, bgColor, padding, Logo, TextLogo, hamburger, Li
     height: height,
     width: width == 'screen' ? '100vw' : width,
     padding,
+    Position: 'fixed',
+    top: 0,
+    left: 0,
   }
 
   const LogoStyle = {
@@ -36,8 +39,18 @@ function Navbar({ height, width, bgColor, padding, Logo, TextLogo, hamburger, Li
     },
   }
   return (
-    <header style={header} className='fixed top-0 left-0'>
-      <nav className='nav container mx-auto'>
+    <header style={header}>
+      <nav
+        style={{
+          margin: 'auto',
+          width: '100%',
+          height: '100%',
+          marginInline: 'auto',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
         {/* logo section */}
 
         <div className={'flex'}>

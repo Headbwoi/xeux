@@ -1,5 +1,5 @@
 import React from 'react'
-import './Mobile.css'
+import '../index.css'
 
 function MobileMenu({
   setShowMobileMenu,
@@ -39,7 +39,13 @@ function MobileMenu({
         >
           {links.map((link, index) => (
             <div key={link + index}>
-              <a href={`/${link}`} className={`link`}>
+              <a
+                href={`/${link}`}
+                className={`link`}
+                style={{
+                  color: MenuProps.color,
+                }}
+              >
                 {link}
               </a>
             </div>

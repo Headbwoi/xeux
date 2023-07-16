@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import './App.css'
 import { Navbar } from './components'
 
 function App() {
@@ -25,7 +24,7 @@ function App() {
           gap: '1rem',
         }}
         mobileMenu={{
-          color: '#111',
+          color: '#fff',
           gap: '1rem',
         }}
         Logo={{
