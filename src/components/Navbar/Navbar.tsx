@@ -9,16 +9,6 @@ function Navbar({ height, width, bgColor, padding, Logo, TextLogo, hamburger, Li
   const matches = useMediaQuery('(min-width: 768px)')
   const [showMobileMenu, setShowMobileMenu] = useState(false)
 
-  const header = {
-    backgroundColor: bgColor,
-    height: height,
-    width: width == 'screen' ? '100vw' : width,
-    padding,
-    Position: 'fixed',
-    top: 0,
-    left: 0,
-  }
-
   const LogoStyle = {
     logoText: {
       fontSize: evalFontSize(TextLogo?.fontSize as string),
@@ -39,7 +29,17 @@ function Navbar({ height, width, bgColor, padding, Logo, TextLogo, hamburger, Li
     },
   }
   return (
-    <header style={header}>
+    <header
+      style={{
+        backgroundColor: bgColor,
+        height: height,
+        width: width == 'screen' ? '100vw' : width,
+        padding,
+        position: 'fixed',
+        top: 0,
+        left: 0,
+      }}
+    >
       <nav
         style={{
           margin: 'auto',
@@ -53,8 +53,21 @@ function Navbar({ height, width, bgColor, padding, Logo, TextLogo, hamburger, Li
       >
         {/* logo section */}
 
-        <div className={'flex'}>
-          <img src={Logo?.Url} alt={Logo?.Alt} className='logo' />
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <img
+            src={Logo?.Url}
+            alt={Logo?.Alt}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'fill',
+            }}
+          />
           <div aria-label='logo' style={LogoStyle.logoText}>
             {TextLogo?.content}
           </div>
@@ -64,19 +77,21 @@ function Navbar({ height, width, bgColor, padding, Logo, TextLogo, hamburger, Li
 
         {matches && (
           <div
-            className='flex'
             style={{
               color: Links.color,
               gap: Links.gap,
+              display: 'flex',
+              alignItems: 'center',
             }}
           >
             {Links.links.map((link, index) => (
               <div key={link + index}>
                 <a
                   href={`/${link}`}
-                  className={`links-desktop`}
                   style={{
                     color: Links.color,
+                    textTransform: 'capitalize',
+                    cursor: 'pointer',
                   }}
                 >
                   {link}
@@ -89,7 +104,12 @@ function Navbar({ height, width, bgColor, padding, Logo, TextLogo, hamburger, Li
         {/* btn */}
 
         {cta && matches && (
-          <div className='flex'>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
             <button
               className={`cta`}
               style={{
@@ -98,6 +118,7 @@ function Navbar({ height, width, bgColor, padding, Logo, TextLogo, hamburger, Li
                 height: cta.height,
                 width: cta.width,
                 borderRadius: cta.borderRedius ? cta.borderRedius : 'full',
+                cursor: 'pointer',
               }}
             >
               <a
